@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#121212"
+    tools:context=".MainActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Calculadora do Júnior"
+                android:textSize="24sp"
+                android:textColor="@android:color/white"
+                android:layout_gravity="center"
+                android:padding="16dp"
+                tools:ignore="HardcodedText" />
+
+        </androidx.appcompat.widget.Toolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <!-- Display for the result -->
+    <TextView
+        android:id="@+id/resultText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        android:text="143"
+        android:textSize="56sp"
+        android:textColor="@android:color/white"
+        android:gravity="end"
+        android:padding="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Display for the operation -->
+    <TextView
+        android:id="@+id/operationText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="180 + 10 - 47"
+        android:textSize="20sp"
+        android:textColor="@android:color/white"
+        android:gravity="end"
+        android:padding="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/resultText" />
+
+    <!-- Calculator Buttons -->
+    <GridLayout
+        android:id="@+id/buttonGrid"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="32dp"
+        android:columnCount="4"
+        android:padding="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/operationText">
+
+
+        <!-- First row of buttons -->
+        <Button
+            android:id="@+id/acButton"
+            style="@style/CalculatorButtonStyle"
+            android:text="AC" />
+        <Button
+            android:id="@+id/plusMinusButton"
+            style="@style/CalculatorButtonStyle"
+            android:text="±" />
+        <Button
+            android:id="@+id/percentageButton"
+            style="@style/CalculatorButtonStyle"
+            android:text="%" />
+
+        <Button
+            android:id="@+id/divideButton"
+            style="@style/CalculatorButtonStyle"
+            android:text="÷"
+            android:textColor="#FFC107" />
+
+        <!-- Second row of buttons -->
+        <Button
+            android:id="@+id/sevenButton"
+            style="@style/CalculatorButtonStyle"
+            android:text="7" />
+        <Button
+            android:id="@+id/eightButton"
+            style="@style/CalculatorButtonStyle"
+            android:text="8" />
+        <Button
+            android:id="@+id/nineButton"
+            style="@style/CalculatorButtonStyle"
+            android:text="9" />
+
+        <Button
+            android:id="@+id/multiplyButton"
+            style="@style/CalculatorButtonStyle"
+            android:text="×"
+            android:textColor="#FFC107" />
+
+        <!-- Third row of buttons -->
+        <Button
+            android:id="@+id/fourButton"
+            style="@style/CalculatorButtonStyle"
+            android:text="4" />
+        <Button
+            android:id="@+id/fiveButton"
+            style="@style/CalculatorButtonStyle"
+            android:text="5" />
+        <Button
+            android:id="@+id/sixButton"
+            style="@style/CalculatorButtonStyle"
+            android:text="6" />
+
+        <Button
+            android:id="@+id/minusButton"
+            style="@style/CalculatorButtonStyle"
+            android:text="-"
+            android:textColor="#FFC107" />
+
+        <!-- Fourth row of buttons -->
+        <Button
+            android:id="@+id/oneButton"
+            style="@style/CalculatorButtonStyle"
+            android:text="1" />
+        <Button
+            android:id="@+id/twoButton"
+            style="@style/CalculatorButtonStyle"
+            android:text="2" />
+        <Button
+            android:id="@+id/threeButton"
+            style="@style/CalculatorButtonStyle"
+            android:text="3" />
+
+        <Button
+            android:id="@+id/plusButton"
+            style="@style/CalculatorButtonStyle"
+            android:text="+"
+            android:textColor="#FFC107" />
+
+        <!-- Fifth row of buttons -->
+        <Button
+            android:id="@+id/zeroButton"
+            style="@style/CalculatorButtonStyle"
+            android:text="0" />
+
+        <Button
+            android:id="@+id/decimalButton"
+            style="@style/CalculatorButtonStyle"
+            android:text="." />
+
+        <ImageButton
+            android:layout_height="70dp"
+            android:id="@+id/backSpaceButton"
+            android:src="@drawable/baseline_backspace_24"
+            style="@style/CalculatorButtonStyle" />
+
+        <Button
+            android:id="@+id/equalsButton"
+            style="@style/CalculatorButtonStyle"
+            android:text="=" />
+
+    </GridLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
