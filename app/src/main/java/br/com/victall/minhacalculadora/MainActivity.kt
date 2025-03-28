@@ -6,7 +6,6 @@ import android.widget.GridLayout
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import br.com.victall.minhacalculadora.R
 
 class MainActivity : AppCompatActivity() {
 
@@ -51,88 +50,44 @@ class MainActivity : AppCompatActivity() {
 
         initializeViews()
 
+        clearAll()
+
+        listabuttons = listOf(sevenButton, eightButton, nineButton, fourButton, fiveButton, sixButton, oneButton, twoButton, threeButton, zeroButton, decimalButton)
+
+        operationButtons = listOf(plusButton, minusButton, multiplyButton, divideButton)
+
         clear()
-
-        acButton.setOnClickListener {
-            clear()
-        }
-
-        backSpaceButton.setOnClickListener {
-            val operation = operationText.text.toString()
-            if (operation.isNotEmpty()) {
-                operationText.text = operation.substring(0, operation.length - 1)
-            }
-        }
-
-        listabuttons = listOf(
-            sevenButton, eightButton, nineButton, fourButton, fiveButton, sixButton,
-            oneButton, twoButton, threeButton, zeroButton, decimalButton
-        )
-
-        operationButtons = listOf(
-            plusMinusButton, percentageButton, divideButton, multiplyButton, minusButton, plusButton
-        )
 
         for (button in listabuttons) {
             button.setOnClickListener {
-                operationText.text = operationText.text.toString() + button.text
-                enableOperationButtons(true)
+                val currentText = operationText.text.toString()
+                operationText.text = currentText + button.text
             }
         }
-
-        for (button in operationButtons) {
-            button.setOnClickListener {
-                if (operationText.text.isNotEmpty()) {
-                    firstOperand = operationText.text.toString().toDouble()
-                    currentOperation = button.text.toString()
-                    operationText.text = operationText.text.toString() + button.text
-                    enableOperationButtons(false)
-                }
-            }
-        }
-
-        equalsButton.setOnClickListener {
-            if (operationText.text.isNotEmpty() && currentOperation != null && firstOperand != null) {
-                val secondOperand = operationText.text.toString().toDouble()
-                val result = performOperation(firstOperand!!, secondOperand, currentOperation!!)
-                resultText.text = result.toString()
-                operationText.text = ""
-                firstOperand = null
-                currentOperation = null
-                enableOperationButtons(false)
-            }
-        }
-
 
     }
 
-
-    private fun performOperation(a: Double, b: Double, operation: String): Double {
-        return when (operation) {
-            "+" -> a + b
-            "-" -> a - b
-            "*" -> a * b
-            "/" -> if (b == 0.0) throw UnsupportedOperationException("Cannot divide by zero") else a / b
-            else -> 0.0
+    private fun clear() {
+        backSpaceButton.setOnClickListener() {
+            val currentText = operationText.text.toString()
+            if (currentText.isNotEmpty()) {
+                operationText.text = currentText.dropLast(1)
+            }
         }
     }
 
-    private fun enableOperationButtons(enable: Boolean) {
-        for (button in operationButtons) {
-            button.isEnabled = enable
+    private fun clearAll() {
+        acButton.setOnClickListener {
+            resultText.text = "0"
+            operationText.text = ""
         }
     }
 
     private fun initializeViews() {
-        // Initialize TextViews
         resultText = findViewById(R.id.resultText)
         operationText = findViewById(R.id.operationText)
-
-        // Initialize Buttons
         acButton = findViewById(R.id.acButton)
-        plusMinusButton = findViewById(R.id.plusMinusButton)
-        percentageButton = findViewById(R.id.percentageButton)
-        divideButton = findViewById(R.id.divideButton)
+        buttonGrid = findViewById(R.id.buttonGrid)
         sevenButton = findViewById(R.id.sevenButton)
         eightButton = findViewById(R.id.eightButton)
         nineButton = findViewById(R.id.nineButton)
@@ -149,14 +104,9 @@ class MainActivity : AppCompatActivity() {
         decimalButton = findViewById(R.id.decimalButton)
         equalsButton = findViewById(R.id.equalsButton)
         backSpaceButton = findViewById(R.id.backSpaceButton)
+        divideButton = findViewById(R.id.divideButton)
 
-        // Initialize GridLayout
-        buttonGrid = findViewById(R.id.buttonGrid)
     }
 
-    private fun clear() {
-        resultText.text = "0"
-        operationText.text = ""
-    }
 
 }
