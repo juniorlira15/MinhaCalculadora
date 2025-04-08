@@ -94,7 +94,7 @@
         <Button
             android:id="@+id/divideButton"
             style="@style/CalculatorButtonStyle"
-            android:text="÷"
+            android:text="/"
             android:textColor="#FFC107" />
 
         <!-- Second row of buttons -->
@@ -114,7 +114,7 @@
         <Button
             android:id="@+id/multiplyButton"
             style="@style/CalculatorButtonStyle"
-            android:text="×"
+            android:text="*"
             android:textColor="#FFC107" />
 
         <!-- Third row of buttons -->

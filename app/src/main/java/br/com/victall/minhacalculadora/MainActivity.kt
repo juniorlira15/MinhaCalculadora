@@ -6,6 +6,7 @@ import android.widget.GridLayout
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import net.objecthunter.exp4j.ExpressionBuilder
 
 class MainActivity : AppCompatActivity() {
 
@@ -49,10 +50,10 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         initializeViews()
-
         clearAll()
+        calculate()
 
-        listabuttons = listOf(sevenButton, eightButton, nineButton, fourButton, fiveButton, sixButton, oneButton, twoButton, threeButton, zeroButton, decimalButton)
+        listabuttons = listOf(sevenButton, eightButton, nineButton, fourButton, fiveButton, sixButton, oneButton, twoButton, threeButton, zeroButton, decimalButton, plusButton, minusButton, multiplyButton, divideButton)
 
         operationButtons = listOf(plusButton, minusButton, multiplyButton, divideButton)
 
@@ -65,6 +66,20 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+
+    }
+
+    private fun calculate() {
+        equalsButton.setOnClickListener {
+            val expression = operationText.text.toString()
+            try {
+                val result = ExpressionBuilder(expression).build().evaluate()
+                resultText.text = result.toString()
+                operationText.text = ""
+            } catch (e: Exception) {
+                resultText.text = "Error"
+            }
+        }
     }
 
     private fun clear() {
