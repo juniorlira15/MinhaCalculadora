@@ -54,7 +54,6 @@ class MainActivity : AppCompatActivity() {
         calculate()
 
         listabuttons = listOf(sevenButton, eightButton, nineButton, fourButton, fiveButton, sixButton, oneButton, twoButton, threeButton, zeroButton, decimalButton, plusButton, minusButton, multiplyButton, divideButton)
-
         operationButtons = listOf(plusButton, minusButton, multiplyButton, divideButton)
 
         clear()
@@ -65,14 +64,14 @@ class MainActivity : AppCompatActivity() {
                 operationText.text = currentText + button.text
             }
         }
-
-
     }
 
     private fun calculate() {
         equalsButton.setOnClickListener {
             val expression = operationText.text.toString()
             try {
+                // arredonde o resultado para 2 casas decimais
+
                 val result = ExpressionBuilder(expression).build().evaluate()
                 resultText.text = result.toString()
                 operationText.text = ""
